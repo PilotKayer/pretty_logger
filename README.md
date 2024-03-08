@@ -4,7 +4,7 @@ This is python package has been developed to emulate the nest.js integrated logg
 It allows for colorful terminal logs as well as activating or deactivating debug/warn or error print statements.
 ## Install
 ```
-pip install pretty-logger
+pip install kayer-pretty-logger
 ```
 
 ---
