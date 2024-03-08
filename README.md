@@ -2,6 +2,10 @@
 ## Description
 This is python package has been developed to emulate the nest.js integrated logger.
 It allows for colorful terminal logs as well as activating or deactivating debug/warn or error print statements.
+## Install
+```
+pip install pretty-logger
+```
 
 ---
 
@@ -61,3 +65,8 @@ This will run the script `main.py` with all the possible loggers:
 ```
 python main.py --pretty-debug --pretty-error
 ```
+
+---
+
+## Buy me a coffee
+If you wish to offer me a coffee, please buy yourself one instead and cheer in my name xD
