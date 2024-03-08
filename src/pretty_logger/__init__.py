@@ -2,7 +2,7 @@ from time import time
 from datetime import datetime
 from sys import argv
 
-from src.colors import BColors
+from pretty_logger.colors import BColors
 
 
 class Logger:
@@ -20,6 +20,7 @@ class Logger:
         :param name: Name for the logger. Usually will be the same as the object calling it
         """
         self.NAME = f'[{BColors.BOLD}{name}{BColors.END_C}]'
+        self.CMDS = ''
 
         if len(argv) > 1:
             for cmd in argv[1:]:
@@ -29,8 +30,12 @@ class Logger:
                 if cmd == '--pretty-error':
                     self.CMDS += 'e'
 
+                if cmd == '--pretty-all':
+                    self.CMDS = 'de'
+                    break
+
                 if cmd == '--pretty-none':
-                    self.CMDS += 'n'
+                    self.CMDS = 'n'
                     break
         else:
             self.CMDS = 'e'
