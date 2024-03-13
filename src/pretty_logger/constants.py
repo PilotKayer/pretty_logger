@@ -11,3 +11,8 @@ class BColors:
     END_C = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
+
+PREFIX: list[int] = [-1]
+"""Job prefix to save the logger to. Using a list as lists are mutable variables in python."""
+
