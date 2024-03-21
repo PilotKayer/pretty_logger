@@ -80,7 +80,7 @@ class Logger:
         if self.FILE_LOGGER:
             self.FILE_LOGGER.save_internal_error(message, error, str(current))
 
-        __stdout__.write(f'[INTERNAL {self.NAME} ERROR][{current}]\tFailed to output: "{message}" with error: "{error}"')
+        __stdout__.write(f'\n[INTERNAL {self.NAME} ERROR][{current}]\tFailed to output: "{message}" with error: "{error}"')
 
     def debug(self, text: str) -> None:
         """
@@ -99,7 +99,7 @@ class Logger:
         start = f'{self.NAME}{BColors.WARNING}[{current}][DEBUG]:\t'
 
         try:
-            __stdout__.write(f'{start}{str(text)}{BColors.END_C}')
+            __stdout__.write(f'\n{start}{str(text)}{BColors.END_C}')
         except TypeError as e:
             self.internal_error(text, e)
 
@@ -120,7 +120,7 @@ class Logger:
         start = f'{self.NAME}{BColors.FAIL}[{current}][ERROR]:\t'
 
         try:
-            __stdout__.write(f'{start}{str(text)}{BColors.END_C}')
+            __stdout__.write(f'\n{start}{str(text)}{BColors.END_C}')
         except TypeError as e:
             self.internal_error(text, e)
 
@@ -141,6 +141,6 @@ class Logger:
         start = f'{self.NAME}{BColors.OK_GREEN}[{current}][LOG]:\t'
 
         try:
-            __stdout__.write(f'{start}{str(text)}{BColors.END_C}')
+            __stdout__.write(f'\n{start}{str(text)}{BColors.END_C}')
         except TypeError as e:
             self.internal_error(text, e)
