@@ -1,3 +1,6 @@
+#  Author:      Davide Alejandro Castejon (aka Kayer)
+#               devkayer@gmail.com
+
 from datetime import datetime
 from time import time
 from os import path, makedirs, listdir

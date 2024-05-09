@@ -1,9 +1,30 @@
+#  Author:      Davide Alejandro Castejon (aka Kayer)
+#               devkayer@gmail.com
+
 from time import time
 from datetime import datetime
 from sys import argv, __stdout__
 
 from pretty_logger.constants import BColors
 from pretty_logger.file_logger import FileLogger
+
+
+def stringify_args(args: tuple[any, ...]) -> str:
+    """
+    Takes multiple arguments of any type and converts them into a single concatenated string
+
+    :param args: list of arguments
+    :return: Concatenated str
+    """
+    output: str = ''
+
+    for var in args:
+        if type(var) is str:
+            output += var + ' '
+        else:
+            output += str(var) + ' '
+
+    return output
 
 
 class Logger:
@@ -80,15 +101,17 @@ class Logger:
         if self.FILE_LOGGER:
             self.FILE_LOGGER.save_internal_error(message, error, str(current))
 
-        __stdout__.write(f'\n[INTERNAL {self.NAME} ERROR][{current}]\tFailed to output: "{message}" with error: "{error}"')
+        __stdout__.write(f'[INTERNAL {self.NAME} ERROR][{current}]\tFailed to output: "{message}" with error: "{error}"\n')
 
-    def debug(self, text: str) -> None:
+    def debug(self, *args: any) -> None:
         """
         Given the debug format, displays in the terminal the text received.
         Formats for "debug" warn logs
 
-        :param text: The text to display
+        :param args: list of arguments to display
         """
+        text: str = stringify_args(args)
+
         if self.FILE_LOGGER:
             self.FILE_LOGGER.save_debug(text)
 
@@ -99,17 +122,19 @@ class Logger:
         start = f'{self.NAME}{BColors.WARNING}[{current}][DEBUG]:\t'
 
         try:
-            __stdout__.write(f'\n{start}{str(text)}{BColors.END_C}')
+            __stdout__.write(f'{start}{str(text)}{BColors.END_C}\n')
         except TypeError as e:
             self.internal_error(text, e)
 
-    def error(self, text: str) -> None:
+    def error(self, *args: any) -> None:
         """
         Given the error format, displays in the terminal the text received.
         Formats for "error" logs.
 
-        :param text: The text to display
+        :param args: list of arguments to display
         """
+        text: str = stringify_args(args)
+
         if self.FILE_LOGGER:
             self.FILE_LOGGER.save_error(text)
 
@@ -120,17 +145,19 @@ class Logger:
         start = f'{self.NAME}{BColors.FAIL}[{current}][ERROR]:\t'
 
         try:
-            __stdout__.write(f'\n{start}{str(text)}{BColors.END_C}')
+            __stdout__.write(f'{start}{str(text)}{BColors.END_C}\n')
         except TypeError as e:
             self.internal_error(text, e)
 
-    def log(self, text: str) -> None:
+    def log(self, *args: any) -> None:
         """
         Given the log format, displays in the terminal the text received.
         Formats for "normal" logs.
 
-        :param text: The text to display
+        :param args: list of arguments to display
         """
+        text: str = stringify_args(args)
+
         if self.FILE_LOGGER:
             self.FILE_LOGGER.save_log(text)
 
@@ -141,6 +168,6 @@ class Logger:
         start = f'{self.NAME}{BColors.OK_GREEN}[{current}][LOG]:\t'
 
         try:
-            __stdout__.write(f'\n{start}{str(text)}{BColors.END_C}')
+            __stdout__.write(f'{start}{str(text)}{BColors.END_C}\n')
         except TypeError as e:
             self.internal_error(text, e)

@@ -1,3 +1,6 @@
+#  Author:      Davide Alejandro Castejon (aka Kayer)
+#               devkayer@gmail.com
+
 class BColors:
     """
     Stores the constants with the codes to change the colors of text in the terminal
