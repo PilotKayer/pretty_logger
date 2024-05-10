@@ -1,9 +1,10 @@
 #  Author:      Davide Alejandro Castejon (aka Kayer)
 #               devkayer@gmail.com
-
+import json
 from time import time
 from datetime import datetime
 from sys import argv, __stdout__
+from json import dumps
 
 from pretty_logger.constants import BColors
 from pretty_logger.file_logger import FileLogger
@@ -21,6 +22,9 @@ def stringify_args(args: tuple[any, ...]) -> str:
     for var in args:
         if type(var) is str:
             output += var + ' '
+        elif type(var) is dict:
+            pretty = dumps(var, indent=3)
+            output += "\n" + str(pretty)
         else:
             output += str(var) + ' '
 
