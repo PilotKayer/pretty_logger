@@ -102,5 +102,9 @@ python main.py --pretty-save-silent --logger-folder-path ./custom_logs/
 
 ---
 
-## Buy me a coffee
-If you wish to offer me a coffee, please buy yourself one instead and cheer in my name xD
+# Buy me a coffee
+If you wish to feed my caffeine addiction, you may donate any amount here:
+
+| PayPal |
+| --- |
+| [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/donate/?hosted_button_id=YBLXFQJESAGU6) |
